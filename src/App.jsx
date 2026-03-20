@@ -55,11 +55,22 @@ export default function LostAndFound() {
               let width = img.width;
               let height = img.height;
 
-              // Square Crop Logic
-              const minSize = Math.min(width, height);
-              c.width = size;
-              c.height = size;
-              ctx.drawImage(img, (width - minSize) / 2, (height - minSize) / 2, minSize, minSize, 0, 0, size, size);
+              // Aspect Ratio Resize Logic
+              const size = 800;
+              if (width > height) {
+                if (width > size) {
+                  height *= size / width;
+                  width = size;
+                }
+              } else {
+                if (height > size) {
+                  width *= size / height;
+                  height = size;
+                }
+              }
+              c.width = width;
+              c.height = height;
+              ctx.drawImage(img, 0, 0, width, height);
               c.toBlob(resolve, 'image/jpeg', 0.7);
             };
             img.src = event.target.result;
@@ -133,7 +144,7 @@ export default function LostAndFound() {
               
               <div className="border-2 border-dashed border-slate-200 rounded-xl p-4 text-center relative cursor-pointer hover:bg-slate-50 transition-colors">
                 <ImageIcon className="mx-auto h-8 w-8 text-slate-400 mb-2" />
-                <span className="text-xs text-slate-500 block">{imageFile ? imageFile.name : 'Upload Square Photo'}</span>
+                <span className="text-xs text-slate-500 block">{imageFile ? imageFile.name : 'Upload Photo'}</span>
                 <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files[0])} className="absolute inset-0 opacity-0 cursor-pointer" />
               </div>
 
@@ -172,7 +183,7 @@ export default function LostAndFound() {
             {filteredItems.map((item) => (
               <div key={item.id} className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition-all group">
                 <div className="relative h-56">
-                  <img src={item.image_url || 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400'} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Item" />
+                  <img src={item.image_url || 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400'} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" alt="Item" />
                   <span className={`absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-black uppercase text-white ${item.type === 'Lost' ? 'bg-rose-500' : 'bg-emerald-500'}`}>
                     {item.type}
                   </span>
