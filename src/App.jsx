@@ -56,7 +56,6 @@ export default function LostAndFound() {
               let height = img.height;
 
               // Aspect Ratio Resize Logic
-              const size = 800;
               if (width > height) {
                 if (width > size) {
                   height *= size / width;
