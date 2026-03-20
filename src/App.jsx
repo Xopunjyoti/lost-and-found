@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 import { Search, PlusCircle, MapPin, Calendar, Image as ImageIcon, Loader2 } from 'lucide-react';
 
 // --- CONFIGURATION ---
-const supabaseUrl = 'YOUR_SUPABASE_URL'; 
+const supabaseUrl = 'https://yxqkyxovdzpqldeyebuc.supabase.co'; 
 const supabaseKey = 'sb_publishable_eHVPjc0Qt6r7Gw5wTdDNdA_XX1rqVLv';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
