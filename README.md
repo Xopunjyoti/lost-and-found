@@ -8,8 +8,6 @@ A community-driven platform designed to reunite people with their lost belonging
 
 * **Post a Listing:** Easily create "Lost" or "Found" posts with descriptions and categories.
 * **Image Uploads:** Attach photos to help identify items quickly.
-* **Smart Search:** Filter by category (Electronics, Pets, Wallets, etc.) and location.
-* **Secure Messaging:** Built-in chat system to coordinate returns without sharing personal phone numbers immediately.
 * **Privacy First:** Users can choose what contact information is visible to the public.
 
 ---
@@ -22,7 +20,6 @@ A community-driven platform designed to reunite people with their lost belonging
 | **Backend** | Node.js / Express |
 | **Database** | MongoDB |
 | **Auth** | Firebase Auth / JWT |
-| **Storage** | Cloudinary (for images) |
 
 ---
 
